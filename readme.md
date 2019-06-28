@@ -1,11 +1,11 @@
-# Minha organização Infra
+# Minha Infra
 
-Minha organização de uma infraestrutura de uma organização moderna e uma arquitetura de uma aplicação cloud-native baseada em containers.
+Minha especificação de uma infraestrutura moderna para uma aplicação cloud-native baseada em containers.
 
 ### Tecnologias
 
 - #### Operating Systems
 
   - **Para o cluster**
-    - Linux Ubuntu Server 18.04.2 LTS
+    - Linux Ubuntu Server 18.04.2 LTS ([download](http://mirror.ufca.edu.br/mirror/ubuntu-releases/18.04.2/ubuntu-18.04.2-live-server-amd64.iso))
 
