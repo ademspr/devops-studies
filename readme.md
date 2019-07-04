@@ -13,15 +13,15 @@ Minha especificação de uma infraestrutura moderna para uma aplicação cloud-n
 
   - Terraform v0.12.3 ([download](https://releases.hashicorp.com/terraform/0.12.3/terraform_0.12.3_linux_amd64.zip)) 
 
-- ### Container Orchestration
+- #### Container Orchestration
 
   - Kubernet v1.15
 
-- ### Container Runtime
+- #### Container Runtime
 
   - Docker v18.06.2
 
-- ### Development IT Automation
+- #### Development IT Automation
 
   - Vagrant v2.2.5 ([download](https://www.vagrantup.com/intro/getting-started/install.html))
 
