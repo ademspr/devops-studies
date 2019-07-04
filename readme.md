@@ -7,11 +7,23 @@ Minha especificação de uma infraestrutura moderna para uma aplicação cloud-n
 - #### Operating Systems
 
   - **Para o cluster**
-    - Linux Ubuntu Server x64 18.04.2 LTS ([download](http://mirror.ufca.edu.br/mirror/ubuntu-releases/18.04.2/ubuntu-18.04.2-live-server-amd64.iso))
+    - Linux Ubuntu Server v18.04.2 LTS x64 ([download](http://mirror.ufca.edu.br/mirror/ubuntu-releases/18.04.2/ubuntu-18.04.2-live-server-amd64.iso))
 
 - #### Automation
 
-  - Terraform 0.12.3 x64 ([download](https://releases.hashicorp.com/terraform/0.12.3/terraform_0.12.3_linux_amd64.zip)) 
+  - Terraform v0.12.3 ([download](https://releases.hashicorp.com/terraform/0.12.3/terraform_0.12.3_linux_amd64.zip)) 
+
+- ### Container Orchestration
+
+  - Kubernet v1.15
+
+- ### Container Runtime
+
+  - Docker v18.06.2
+
+- ### Development IT Automation
+
+  - Vagrant v2.2.5 ([download](https://www.vagrantup.com/intro/getting-started/install.html))
 
 ### Instalação
 
