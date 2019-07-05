@@ -1,0 +1,47 @@
+---
+  - hosts: #master
+    become: yes
+    vars:
+      node_ip: #ip
+    tasks:
+      # - name: "LNFL - Configure node IP"
+      #   lineinfile:
+      #     path: /etc/default/kubelet
+      #     line: KUBELET_EXTRA_ARGS=--node-ip={{ node_ip }}
+      
+      # - name: "SVC - Restart Kubelet"
+      #   service:
+      #     name: kubelet
+      #     daemon_reload: yes
+      #     state: restarted
+
+      - name: "CMD - Initialize K8s cluster using kubeadm"
+        shell: kubeadm init --node-name k8s-master --pod-network-cidr=192.168.0.0/16 >> cluster_initialized.txt
+        args:
+          chdir: $HOME
+          creates: cluster_initialized.txt
+      
+      - name: "FILE - Create .kube directory"
+        become: yes
+        become_user: devops
+        file:
+          path: $HOME/.kube
+          state: directory
+          mode: 0755
+      
+      - name: "COPY - Copy admin.conf to user's kube config"
+        copy:
+          src: /etc/kubernetes/admin.conf
+          dest: /home/devops/.kube/config
+          remote_src: yes
+          owner: devops
+      
+      - name: "CMD - Install calico pod network"
+        become: yes
+        become_user: devops
+        shell: kubectl apply -f https://docs.projectcalico.org/v3.7/manifests/calico.yaml >> pod_network_setup.txt
+        args:
+          chdir: $HOME
+          creates: pod_network_setup.txt
+
+        

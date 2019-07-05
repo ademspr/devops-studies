@@ -1,12 +1,11 @@
 ---
   - hosts: all
     vars:
-      - devops_password: suasenha
+      - devops_password: #pwd
         ansible_python_interpreter: "/usr/bin/env python3"
     gather_facts: no
     remote_user: infra
     become: true
-
     tasks:
       - name: "USER - Add a new user named devops"
         user:

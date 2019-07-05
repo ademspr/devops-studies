@@ -2,28 +2,40 @@
 
 Minha especificação de uma infraestrutura moderna para uma aplicação cloud-native baseada em containers.
 
+refs:
+
+- https://docs.ansible.com/
+- https://kubernetes.io/docs/setup/production-environment/container-runtimes/
+- https://kubernetes.io/blog/2019/03/15/kubernetes-setup-using-ansible-and-vagrant/
+
 ### Tecnologias
 
-- #### Operating Systems
+#### Operating Systems
 
-  - **Para o cluster**
-    - Linux Ubuntu Server v18.04.2 LTS x64 ([download](http://mirror.ufca.edu.br/mirror/ubuntu-releases/18.04.2/ubuntu-18.04.2-live-server-amd64.iso))
+  - Linux Ubuntu Server v18.04.2 LTS x64 ([download](http://mirror.ufca.edu.br/mirror/ubuntu-releases/18.04.2/ubuntu-18.04.2-live-server-amd64.iso))
 
-- #### Automation
+#### Automation
 
-  - Terraform v0.12.3 ([download](https://releases.hashicorp.com/terraform/0.12.3/terraform_0.12.3_linux_amd64.zip)) 
+  - Terraform v0.12.3 ([download](https://releases.hashicorp.com/terraform/0.12.3/terraform_0.12.3_linux_amd64.zip))
+  - Ansible v2.8 ([tutorial](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html#latest-releases-via-apt-ubuntu))
 
-- #### Container Orchestration
+#### Container Orchestration
 
   - Kubernet v1.15
 
-- #### Container Runtime
+#### Containers
 
   - Docker v18.06.2
 
-- #### Development IT Automation
+### Cluster
 
-  - Vagrant v2.2.5 ([download](https://www.vagrantup.com/intro/getting-started/install.html))
+- #### Container runtime
+
+  Docker
+
+- #### Pod Network
+
+  Calico
 
 ### Instalação
 

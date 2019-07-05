@@ -7,12 +7,12 @@
       ansible_python_interpreter: "/usr/bin/env python3"
       
     tasks:
-     - name: "APT - Add Docker  GPG key"
+     - name: "APT - Add an apt signing key for Docker"
        apt_key:
          url: https://download.docker.com/linux/ubuntu/gpg
          state: present
 
-     - name: "APT - Add Docker repository"
+     - name: "APT - Add apt repository for Docker"
        apt_repository:
          repo: "deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable"
          state: present
@@ -25,7 +25,7 @@
 
      - name: "APT - Install 'docker-ce'"
        apt:
-         name: "docker-ce=18.06.2~ce~3-0~ubuntu"
+         name: ["docker-ce=18.06.2~ce~3-0~ubuntu", "containerd.io"]
          update_cache: yes
 
      - name: "FILE - Create daemon file"
@@ -37,12 +37,10 @@
        file:
          path: "/etc/systemd/system/docker.service.d"
          state: directory
-       notify:
-         - restart docker
-
-    handlers:
-      - name: restart docker
-        systemd:
-          state: restarted
-          name: docker
-          daemon_reload: yes
+     
+     - name: "SVC - Restart Docker service"
+       service:
+         state: restarted
+         name: docker
+         daemon_reload: yes
+     
