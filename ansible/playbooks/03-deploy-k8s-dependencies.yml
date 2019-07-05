@@ -1,7 +1,8 @@
 ---
   - hosts: all
-    become: true
+    become: yes
     remote_user: devops
+    gather_facts: false
     tasks:
     - name: "MOUNT - Remove swapfile from /etc/fstab"
       mount:

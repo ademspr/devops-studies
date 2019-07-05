@@ -1,6 +1,7 @@
 ---
   - hosts: #master
     become: yes
+    gather_facts: false
     vars:
       node_ip: #ip
     tasks:
