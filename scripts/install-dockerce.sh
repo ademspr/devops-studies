@@ -17,7 +17,7 @@ add-apt-repository \
 apt-get update && apt-get install docker-ce=18.06.2~ce~3-0~ubuntu
 
 # Setup daemon.
-cat > /etc/docker/daemon.json <<EOF
+cat > /etc/docker/daemon.json << EOF
 {
   "exec-opts": ["native.cgroupdriver=systemd"],
   "log-driver": "json-file",
