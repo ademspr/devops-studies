@@ -2,14 +2,19 @@
   - hosts: #master
     become: yes
     gather_facts: false
-    vars:
-      node_ip: #ip
+    vars_prompt:
+      - name: master_name
+        prompt: "Master node name:"
+        private: no
+      # - name: node_ip
+      #   prompt: "Master node Ip:"
+      #   private: no
     tasks:
       # - name: "LNFL - Configure node IP"
       #   lineinfile:
       #     path: /etc/default/kubelet
-      #     line: KUBELET_EXTRA_ARGS=--node-ip={{ node_ip }}
-      
+      #     line: KUBELET_EXTRA_ARGS=--node-ip={{ node_ip }}    
+
       # - name: "SVC - Restart Kubelet"
       #   service:
       #     name: kubelet
@@ -17,7 +22,7 @@
       #     state: restarted
 
       - name: "CMD - Initialize K8s cluster using kubeadm"
-        shell: kubeadm init --node-name k8s-master --pod-network-cidr=192.168.0.0/16 >> cluster_initialized.txt
+        shell: kubeadm init --node-name {{ master_name }} --pod-network-cidr=192.168.0.0/16 >> cluster_initialized.txt
         args:
           chdir: $HOME
           creates: cluster_initialized.txt

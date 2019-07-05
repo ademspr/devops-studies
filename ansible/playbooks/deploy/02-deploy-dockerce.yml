@@ -43,4 +43,9 @@
          state: restarted
          name: docker
          daemon_reload: yes
-     
+
+     - name: "USER - Add user to docker group"
+       user:
+         name: devops
+         group: docker
+         append: yes 
