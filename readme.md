@@ -27,6 +27,10 @@ refs:
 
   - Docker v18.06.2
 
+#### CI
+
+  - Jenkins 
+
 ### Cluster
 
 - #### Container runtime
@@ -36,6 +40,7 @@ refs:
 - #### Pod Network
 
   Calico
+
 
 ### Instalação
 
