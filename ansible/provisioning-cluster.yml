@@ -1,0 +1,4 @@
+---
+- hosts: cluster_master
+  roles:
+   - deploy_user

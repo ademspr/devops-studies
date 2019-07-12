@@ -1,0 +1,40 @@
+---
+- name: "USER - Add a new user named devops"
+  user:
+    name: devops
+    shell: /bin/bash
+    password: "{{ devops_user_passwd }}"
+  become: yes  
+
+- name: "COPY - Add devops user to the sudoers"
+  copy:
+    dest: "/etc/sudoers.d/{{ devops_user_name }}"
+    content: "{{ devops_user_name }} ALL=(ALL) NOPASSWD: ALL"
+  become: yes  
+    
+- name: "SSH - Deploy SSH Key"
+  authorized_key:
+    user: "{{ devops_user_name }}"
+    key: "{{ lookup('file', '/home/{{ devops_user_name }}/.ssh/id_rsa.pub')}}"
+    state: present
+  become: yes  
+
+- name: "LNFILE - Disable passwd auth"
+  lineinfile:
+    dest: "/etc/ssh/sshd_config"
+    regexp: '^PasswordAuthentication'
+    line: 'PasswordAuthentication no'
+    state: present
+    backup: yes
+  become: yes  
+
+- name: "LNFILE - Disable root login"
+  lineinfile:
+    dest: "/etc/ssh/sshd_config"
+    regexp: '^PermitRootLogin'
+    line: 'PermitRootLogin no'
+    state: present
+    backup: yes
+  become: yes            
+  notify:
+    - restart ssh
