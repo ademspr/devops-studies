@@ -1,5 +1,5 @@
 ---
-- hosts: cluster_master
+- hosts: cluster
   roles:
    - deploy_master_user
    - dockerce
