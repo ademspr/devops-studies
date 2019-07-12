@@ -2,3 +2,4 @@
 - hosts: cluster_master
   roles:
    - deploy_master_user
+   - dockerce
