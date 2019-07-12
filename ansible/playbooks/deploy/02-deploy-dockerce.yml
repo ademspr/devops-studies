@@ -2,10 +2,7 @@
   - hosts: all
     gather_facts: no
     remote_user: devops
-    become: true
-    vars:
-      ansible_python_interpreter: "/usr/bin/env python3"
-      
+    become: true    
     tasks:
      - name: "APT - Add an apt signing key for Docker"
        apt_key:

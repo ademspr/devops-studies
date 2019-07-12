@@ -1,0 +1,46 @@
+---
+- name: "APT - Add an apt signing key for Docker"
+  apt_key:
+    url: https://download.docker.com/linux/{{ target_distribution }}/gpg
+    state: present
+  become: yes  
+
+- name: "APT - Add apt repository for Docker"
+  apt_repository:
+    repo: "deb [arch={{ target_arch }}] https://download.docker.com/linux/{{ target_distribution }} {{ lsb_release }} stable"
+    state: present
+    filename: docker
+  become: yes  
+
+- name: "APT - Install misc packages"
+  apt:
+    name: ["aptitude", "apt-transport-https", "ca-certificates", "curl", "gnupg-agent", "software-properties-common"]
+    update_cache: yes
+  become: yes  
+
+- name: "APT - Install 'docker-ce'"
+  apt:
+    name: ["docker-ce={{ version }}", "containerd.io"]
+    update_cache: yes
+  become: yes
+
+- name: "FILE - Create daemon file"
+  copy:
+    dest: "/etc/docker/daemon.json" 
+    content: "{{ role_path }}/files/daemon.json"
+  become: yes  
+
+- name: "FILE - Create service folder"
+  file:
+    path: "/etc/systemd/system/docker.service.d"
+    state: directory
+  become: yes
+  notify:
+   - restart docker
+
+- name: "USER - Add user to docker group"
+  user:
+    name: devops
+    group: docker
+    append: yes
+  become: yes  

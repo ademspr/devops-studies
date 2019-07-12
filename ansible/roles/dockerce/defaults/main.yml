@@ -1,0 +1,4 @@
+---
+  target_arch: 'amd64'
+  target_distribution: 'ubuntu'
+  lsb_release: 'bionic'
