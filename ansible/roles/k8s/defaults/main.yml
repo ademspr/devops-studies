@@ -1,0 +1,14 @@
+kubernetes_version: '1.15'
+kubernetes_role: master
+kubernetes_master_name: 'master'
+kubernetes_kubeadm_init_extra_opts: ""
+kubernetes_allow_pods_on_master: true
+kubernetes_pod_network_cidr: '192.168.0.0/16'
+kubernetes_apiserver_advertise_address: ''
+kubernetes_version_kubeadm: 'stable-{{ kubernetes_version }}'
+kubernetes_ignore_preflight_errors: 'all'
+kubernetes_apt_release_channel: main
+kubernetes_apt_repository: "deb http://apt.kubernetes.io/ kubernetes-xenial {{ kubernetes_apt_release_channel }}"
+kubernetes_apt_ignore_key_error: false
+kubernetes_yum_arch: x86_64
+kubernetes_calico_manifest_file: "https://docs.projectcalico.org/v3.7/manifests/calico.yaml"
